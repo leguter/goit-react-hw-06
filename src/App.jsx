@@ -33,7 +33,7 @@ function App() {
   }
   const filteredCards = cards.filter((card) => card.name.toLowerCase().includes(filter.toLowerCase()))
   function deleteCard(item) {
-    const action = deleteContact(item)
+    const action = deleteContact(item.id)
     dispatch(action)
     
   }
