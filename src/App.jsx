@@ -5,6 +5,8 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 import ContactForm from "./ContactForm/ContactForm";
 import { useEffect } from "react";
+import { deleteContact } from "./redux/contactsSlice";
+import { useDispatch } from "react-redux";
 function App() {
   const [cards, setCards] = useState(() => {
     
@@ -20,6 +22,7 @@ function App() {
   ])
   });
   const [filter, setFilter] = useState("")
+  const dispatch = useDispatch()
   const handleChange = (evt) => {
     setFilter(evt.target.value);
    
@@ -30,7 +33,8 @@ function App() {
   }
   const filteredCards = cards.filter((card) => card.name.toLowerCase().includes(filter.toLowerCase()))
   function deleteCard(item) {
-    setCards(cards.filter((card) => card.id !== item.id));
+    const action = deleteContact(item)
+    dispatch(action)
     
   }
 useEffect(() => {
