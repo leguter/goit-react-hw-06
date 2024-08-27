@@ -25,7 +25,7 @@ function App() {
   // });
   // const [filter, setFilter] = useState("")
   const dispatch = useDispatch()
-  const filterValue = useSelector(useSelector((state) => state.filter.filterValue))
+  const filterValue = useSelector((state) => state.filter.filterValue)
   const handleChange = (evt) => {
    const value=  setFilterValue(evt.target.value);
    dispatch(value)
